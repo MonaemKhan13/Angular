@@ -1,0 +1,97 @@
+<!-- <table class="table table-hover h-100 w-100">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Id</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of data">
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.userId}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.body}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!-- <div *ngFor="let item of data">
+  <h1>{{item.id}}</h1>
+  <p>{{item.title}}</p>
+</div> -->
+
+<!-- <div class="row">
+  <ng-container *ngIf="!isLoading">
+    <div class="col-3 mt-3" *ngFor="let item of data">
+      <div class="card">
+        <div class="card-body">
+          <h1>{{item.title}}</h1>
+          <h2>{{item.body}}</h2>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div> -->
+
+
+<div class="d-flex justify-content-center align-item-center mt-2" *ngIf="alert">
+  <div class="bg-info w-75 text-center">
+    Data Update!! Successfull
+  </div>
+
+</div>
+
+
+<div class="card mt-1 p-5">
+  <div class="row">
+
+    <form [formGroup]="loginform" (ngSubmit)="datasubmit()" class="row g-3 needs-validation">
+      <div class="col-md-6">
+        <label for="fname" class="form-label">User Id</label>
+        <input formControlName="userId" type="text" class="form-control" id="fname" placeholder="User Id" required>
+      </div>
+
+      <div class="col-md-6">
+        <label for="lname" class="form-label">Title</label>
+        <input formControlName="title" type="text" class="form-control" id="lname" placeholder="Title" required>
+      </div>
+
+      <div class="col-md-6">
+        <label for="email" class="form-label">Body</label>
+        <input formControlName="body" type="Email" class="form-control" id="email" placeholder="Body" required>
+      </div>
+
+      <div class="col-12" *ngIf="!dataupdate">
+        <button class="btn btn-primary" type="submit">Create</button>
+        <!-- [disabled]="loginform.invalid" -->
+      </div>
+      <div class="col-12" *ngIf="dataupdate">
+        <button class="btn btn-primary" type="submit">Update</button>
+        <!-- [disabled]="loginform.invalid" -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-hover h-100 w-100">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Id</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of data">
+    <tr>
+      <td (click)="selectdata(item)">{{item.id}}</td>
+      <td (click)="selectdata(item)">{{item.userId}}</td>
+      <td (click)="selectdata(item)">{{item.title}}</td>
+      <td (click)="selectdata(item)">{{item.body}}</td>
+      <button class="btn btn-primary" (click)="deleteaction(item.id)">Delete</button>
+    </tr>
+
+  </tbody>
+</table>
